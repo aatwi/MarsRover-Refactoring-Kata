@@ -1,23 +1,22 @@
+
 package mars.rover;
-
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class MarsRoverTest {
+public class MarsRoverTest {
 
     @Test
-    public void
-    acceptance_test_1() {
-        String newPosition = MarsRover.move(1, 2, 'N', "LMLMLMLMM");
-        assertEquals("1 3 N", newPosition);
-    }
+    public void testExecuteAndGetPosition() {
+        MarsRover rover = new MarsRover(0, 0, 'N');
+        rover.execute("M");
+        assertEquals("0 1 N", rover.getPosition());
 
-    @Test
-    public void
-    acceptance_test_2() {
-        String newPosition = MarsRover.move(3, 3, 'E', "MMRMMRMRRM");
-        assertEquals("5 1 E", newPosition);
-    }
+        rover = new MarsRover(0, 0, 'N');
+        rover.execute("MMRMM");
+        assertEquals("2 2 E", rover.getPosition());
 
+        rover = new MarsRover(2, 2, 'E');
+        rover.execute("MMRMM");
+        assertEquals("4 0 S", rover.getPosition());
+    }
 }
