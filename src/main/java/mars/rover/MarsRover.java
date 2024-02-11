@@ -3,8 +3,11 @@ package mars.rover;
 public class MarsRover {
 
     public static String move(int x, int y, char direction, String instructions) {
+
         if (!instructions.isEmpty()) {
+
             char instruction = instructions.charAt(0);
+
             if (instruction == 'L') {
                 if (direction == 'N') {
                     return move(x, y, 'W', instructions.substring(1, instructions.length()));
